@@ -13,6 +13,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'store.apps.StoreConfig',
+    'searchstore.apps.SearchstoreConfig',
     'cart.apps.CartConfig',
     'django.contrib.admin',
     'django.contrib.auth',
