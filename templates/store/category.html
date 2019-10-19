@@ -19,6 +19,7 @@
 {% block content %}
 
 
+
     <div class="container">
        <ul>
 		    <li class="">
@@ -49,7 +50,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{product.name}}</h5>
                             <p class="card-text">{{ product.description|truncatewords:25}}...</p>
-                            <a href="#" class="btn btn-primary">Learn more</a>
+                             <a href="{{product.get_url}}" class="btn btn-primary">Learn more</a> 
                         </div>
                     </div>
                 </div>
