@@ -51,6 +51,7 @@
                             <h5 class="card-title">{{product.name}}</h5>
                             <p class="card-text">{{ product.description|truncatewords:25}}...</p>
                              <a href="{{product.get_url}}" class="btn btn-primary">Learn more</a> 
+							 <a class="btn btn-secondary" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a>
                         </div>
                     </div>
                 </div>
