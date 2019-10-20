@@ -119,3 +119,6 @@ dmypy.json
 .pyre/
 
 .vscode/
+
+.env
+/.env

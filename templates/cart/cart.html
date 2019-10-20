@@ -63,11 +63,11 @@
 								</td>
 								{% if cart_item.quantity < cart_item.product.stock %}
 									<td>
-										{% comment %} <a href="{% url 'cart:add_cart' cart_item.product.id %}" class="cust {% endcomment %}
+										<a href="{% url 'cart:add_cart' cart_item.product.id %}" class="custom_a"><i class="fas fa-plus-circle custom_icon"></i></a>&nbsp;<a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fas fa-minus-circle custom_icon"></i></a>&nbsp;<a href="{% url 'cart:full_remove' cart_item.product.id %}" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a>
 									</td>
 								{% else %}
 									<td>
-										{% comment %} &nbsp;<a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fas fa-minus-circle custom_icon"></i></a>&nbsp;<a href="{% url 'cart:full_remove' cart_item.product.id %}" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a> {% endcomment %}
+										&nbsp;<a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fas fa-minus-circle custom_icon"></i></a>&nbsp;<a href="{% url 'cart:full_remove' cart_item.product.id %}" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a>
 									</td>
 									<td></td>
 								{% endif %}
@@ -99,16 +99,16 @@
 						</tr>
 					</tbody>
 				</table>
-				{% comment %} <div class="mx-auto">
+				
 					<form action="" method="POST">
 						{% csrf_token %}
 					  <script
 					    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 					    data-key="{{ data_key }}"
 					    data-amount="{{ stripe_total }}"
-					    data-name="Perfect Cushion Shop"
+					    data-name="Coup Supply"
 					    data-description="{{ description }}"
-					    data-image="{% static 'img/logo.png' %}"
+					    {% comment %} data-image="{% static 'img/logo.png' %}" {% endcomment %}
 					    data-locale="auto"
 					    data-currency="gbp"
 					    data-shipping-address="true"
@@ -116,8 +116,8 @@
 					    data-zip-code="true">
 					  </script>
 					</form>
-					<a href="{% url 'shop:allProdCat' %}" class="btn btn-secondary btn-block my_custom_button">Continue Shopping</a>
-				</div> {% endcomment %}
+					<a href="{% url 'store:allProdCat' %}" class="btn btn-secondary btn-block my_custom_button">Continue Shopping</a>
+				</div> 
 			</div>
 		</div>
 		<br>

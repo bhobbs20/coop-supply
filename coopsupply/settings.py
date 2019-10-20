@@ -1,5 +1,8 @@
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -21,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'stripe',
 ]
 
 MIDDLEWARE = [
@@ -100,3 +104,8 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+STRIPE_PUBLISHABLE_KEY = os.getenv('PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('SECRET_KEY')
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
