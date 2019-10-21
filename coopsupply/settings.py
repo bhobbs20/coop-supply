@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'searchstore.apps.SearchstoreConfig',
     'cart.apps.CartConfig',
     'order.apps.OrderConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
