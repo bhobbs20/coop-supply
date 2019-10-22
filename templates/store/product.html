@@ -11,32 +11,62 @@
 
 {% block content %}
 
-		<div class="mx-auto">
-			<p><a href="{% url 'store:allProdCat' %}">Home</a> | <a href="{{ product.category.get_url }}">{{product.category}}</a> | {{product.name}}</p>
-		</div>
-		
-			<br>
-			<div class="row">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
-					
-						<img src="{{product.image.url}}" alt="{{product.name}}" class="img-fluid">
-					
-				</div>
-				<div class="col-12 col-sm-12 col-md-12 col-lg-6">
-					<div>
-						<h1 class="my_prod_title">{{product.name}}</h1>
-						<p>${{product.price}}</p>
-						<p class="my_title">Product Description</p>
-						<p class="text-justify my_prod_text">{{product.description}}</p>
-						{% if product.stock <= 0%}
-							<p class="text-justify my_prod_text"><b>Out of Stock</b></p>
-						{% else %}
-							<a class="btn btn-secondary" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a>
-                        
-						{% endif %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tank Top T-Shirt</strong></div>
+        </div>
+      </div>
+    </div>  
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="{{product.image.url}}" alt="{{product.name}}" class="img-fluid prod-img">
+          </div>
+          <div class="col-md-6">
+            <h2 class="text-black">{{product.name}}</h2>
+            <p>{{product.description}}</p>
+            <p><strong class="text-primary h4">${{product.price}}</strong></p>
+            <div class="mb-1 d-flex">
+            </div>
+            <p><a href="{% url 'cart:add_cart' product.id %}" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-section block-3 site-blocks-2 bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h2>Featured Products</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="nonloop-block-3 owl-carousel">
+
+			 {% if featured_products %}
+              {% for product in featured_products %}
+
+              <div class="item">
+                <div class="block-4 text-center">
+                  <figure class="block-4-image">
+                    <img src="{{product.image.url}}" alt="{{product.name}}" class="img-fluid">
+                  </figure>
+                  <div class="block-4-text p-4">
+                    <h3><a href="{{product.get_url}}">{{ product.name }}</a></h3>
+                    <p class="mb-0">{{product.description|truncatewords:10}}</p>
+                    <p class="text-primary font-weight-bold">${{product.price}}</p>
+                  </div>
+                </div>
+              </div>
+			{% endfor %}
+			{% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 {% endblock %}

@@ -767,3 +767,8 @@ a {
   background-color: #7971ea !important;
   color: #fff !important;
 }
+
+.prod-img {
+  width: 400px !important;
+  height: 400px !important;
+}

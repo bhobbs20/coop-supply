@@ -29,4 +29,12 @@ def ProductCatDetail(request, c_slug, product_slug):
         product = Product.objects.get(category__slug=c_slug, slug=product_slug)
     except Exception as e:
         raise e
-    return render(request, 'store/product.html', {'product': product})
+    
+    featured_products = Product.objects.order_by('-created').filter(featured=True)
+    
+    context = {
+        'featured_products': featured_products,
+        'product': product
+    }
+    
+    return render(request, 'store/product.html', context )
