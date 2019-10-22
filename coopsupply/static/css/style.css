@@ -772,3 +772,25 @@ a {
   width: 400px !important;
   height: 400px !important;
 }
+
+.stripe-button-el {
+  
+  text-transform: uppercase;
+    position: relative;
+    -webkit-transition: 0.2s all ease-in-out !important;
+    -o-transition: 0.2s all ease-in-out !important;
+    transition: 0.2s all ease-in-out !important;
+    top: 0;
+    
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: .2em;
+    color: #fff !important;
+    background-color: #7971ea !important;
+    border-color: #7971ea !important;
+}
+
+.cart-num {
+  padding-left: 5px;
+  padding-right: 5px;
+}
