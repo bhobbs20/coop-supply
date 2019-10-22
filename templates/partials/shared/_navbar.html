@@ -1,49 +1,86 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{% url 'index' %}">CoopSupply</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Shop
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% comment %} <a class="dropdown-item" href="{% url 'store' %}">All Products</a> {% endcomment %}
-                <a class="dropdown-item" href="{% url 'store:allProdCat' %}">All Products</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+<header class="site-navbar" role="banner">
+      <div class="site-navbar-top">
+        <div class="container">
+          <div class="row align-items-center">
+
+            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+              <form action="" class="site-block-top-search" action="{% url 'searchstore:searchResult' %}" method="get">
+               {% csrf_token %}
+                <span class="icon icon-search2"></span>
+                <input type="text" class="form-control border-0" placeholder="Search">
+              </form>
             </div>
-        </li>
-        {% if user.is_authenticated %}
-             Welcome {{ user.username }}
-              <a href="javascript:{document.getElementById('logout').submit()}" class="dropdown-item">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-            <form action="{% url 'logout' %}" method="POST" id="logout">
-                {% csrf_token %}
-                <input type="hidden">
-            </form>
-          {% else %}
 
-           <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'register' %}">Register</a>
-    </li>
+            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+              <div class="site-logo">
+                <a href="{% url 'index' %}" class="js-logo-clone">Coup Supply</a>
+              </div>
+            </div>
 
-        {% endif %}
-        <li class="nav-item">
-            <a class="nav-link" href=" ">Contact</a>
-        </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0" action="{% url 'searchstore:searchResult' %}" method="get">
-        {% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-    </form>
-  </div>
-</nav>
+            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+              <div class="site-top-icons">
+                <ul>
+                  {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="icon icon-person"></span>
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">History</a>
+                        <a href="javascript:{document.getElementById('logout').submit()}" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                        <form action="{% url 'logout' %}" method="POST" id="logout">
+                           {% csrf_token %}
+                            <input type="hidden">
+                        </form>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">{{user.username}} is Awesome!</a>
+                    </div>
+                  </li>
+                  {% else %}
+                   <li><a href="{% url 'register' %}">Register</span></a></li>
+                   <li><a href="{% url 'login' %}">Login</span></a></li>
+                  {% endif %}
+                  {% if item_count > 0 %}
+                  <li>
+                    <a href="{% url 'cart:cart_detail' %}" class="site-cart">
+                      <span class="icon icon-shopping_cart"></span>
+                      <span class="count">{{item_count}}</span>
+                    </a>
+                  </li>
+                  {% else %}
+                     <li>
+                        <a href="{% url 'store:allProdCat' %}" class="site-cart">
+                          <span class="icon icon-shopping_cart"></span>
+                          <span class="count">0</span>
+                        </a>
+                      </li>
+
+
+                  {% endif %}
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                </ul>
+              </div> 
+            </div>
+
+          </div>
+        </div>
+      </div> 
+      <nav class="site-navigation text-right text-md-center" role="navigation">
+        <div class="container">
+          <ul class="site-menu js-clone-nav d-none d-md-block">
+            <li class="active">
+              <a href="{% url 'index' %}">Home</a>
+            </li>
+           <li><a href="{% url 'store:allProdCat' %}">Shop</a></li>
+
+              {% for cat in links %}
+             <li><a href="{{cat.get_url}}">{{cat.name}}</a></li>
+              {% endfor %}
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
