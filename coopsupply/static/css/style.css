@@ -757,3 +757,13 @@ a {
   height: 400px;
 }
 
+.pro-img {
+  width: 300px;;
+  height: 100%;
+  width: 100%;
+}
+
+.home-active {
+  background-color: #7971ea !important;
+  color: #fff !important;
+}
