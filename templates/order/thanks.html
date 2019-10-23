@@ -4,22 +4,20 @@
 	Thanks - Coup Supply
 {% endblock %}
 {% block content %}
-	<div>
-		<div class="text-center">
-			<br>
-			<br>
-			<h1 class="text-center my_title">
-				Thanks for placing your order
-			</h1>
-			<br>
-			<br>
-			<p>Your order number is: <b>{{ customer_order.id }}</b></p>
-			<br>
-			<p>
-				We have received your order and will begin processing right away. For your records an email confirmation has been sent to you. It contains details of the items you purchased.
-			</p>
-		</div>
-	</div>
-	<br>
-	<br>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <span class="icon-check_circle display-3 text-success"></span>
+            <h2 class="display-3 text-black">Thank you!</h2>
+            <h4 class="lead ">You order was successfuly completed.</h4>
+			<h4 class="lead ">Order id: {{ customer_order.id }}</h4>
+			<h4 class="lead mb-5">Order Cost: ${{ customer_order.total }}</h4>
+			
+            <p><a href="{% url 'store:allProdCat' %}" class="btn btn-sm btn-primary">Back to shop</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock %}
