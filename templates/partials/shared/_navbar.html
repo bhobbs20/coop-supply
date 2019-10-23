@@ -79,7 +79,7 @@
               {% for cat in links %}
              <li><a href="{{cat.get_url}}">{{cat.name}}</a></li>
               {% endfor %}
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
           </ul>
         </div>
       </nav>
