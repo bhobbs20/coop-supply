@@ -13,15 +13,18 @@
 	<div class="container">
 		<div class="row mx-auto">
 			{% for product in products %}
-				<div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">
-					<div class="card text-center" style="min-width: 18rem;">
-						<a href="{{product.get_url}}"><img class="card-img-top my_image" src="{{product.image.url}}" alt="{{product.name}}"></a>
-						<div class="card-body">
-							<h4>{{product.name}}</h4>
-							<p>£{{product.price}}</p>
-						</div>
-					</div>
-				</div>
+				<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                	<figure class="block-4-image">
+                    	<a href="{{product.get_url}}"><img src="{{product.image.url}}" alt="{{product.name}}" class="img-fluid pro-img"></a>
+                  	</figure>
+                  	<div class="block-4-text p-4">
+                    	<h3><a href="{{product.get_url}}">{{product.name| truncatechars:15}}</a></h3>
+                    	<p class="mb-0">{{product.description| truncatechars:25}}</p>
+                    	<p class="text-primary font-weight-bold">${{product.price}}</p>
+                  	</div>
+                	</div>
+              	</div>
 				{% empty %}
 				<div class="row mx-auto">
 					<p class="text-center my_search_text">0 results found.</p>

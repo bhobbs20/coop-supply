@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>New Order #{{ transaction.id }} - PigeonCoup</title>
+		<title>New Order #{{ transaction.id }} - Coup Supply</title>
 		<style>
 			table {
 				width: 60%;
@@ -48,19 +48,19 @@
 			</tr>
 			{% for item in order_items %}
 			<tr>
-				<td>{{ item.product }}</td>
-				<td>{{ item.quantity }}</td>
-				<td>£{{ item.price }}</td>
-				<td>£{{ item.sub_total }}</td>
+				<td>${{ item.product }}</td>
+				<td>${{ item.quantity }}</td>
+				<td>${{ item.price }}</td>
+				<td>${{ item.sub_total }}</td>
 			</tr>
 			{% endfor %}
 			<tr>
 				<td colspan="3" style="text-align: right;"><b>Total</b></td>
-				<td>£{{ transaction.total }}</td>
+				<td>${{ transaction.total }}</td>
 			</tr>
 			<tr>
 				<td colspan="3" style="text-align: right;"><b>Total paid</b></td>
-				<td>£{{ transaction.total }}</td>
+				<td>${{ transaction.total }}</td>
 			</tr>
 			<tr>
 				<td valign="top" colspan="2" style="width: 50%;">
@@ -73,7 +73,7 @@
 				</td>
 				<td valign="top" colspan="2" style="width: 50%;">
 					<b>Payment details:</b><br>
-					£{{ transaction.total }} was paid successfully via Stripe.
+					${{ transaction.total }} was paid successfully via Stripe.
 				</td>
 			</tr>
 		</table>

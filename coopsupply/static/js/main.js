@@ -198,4 +198,8 @@ jQuery(document).ready(function($) {
 	siteMagnificPopup();
 
 
+setTimeout(function() {
+  $('#message').fadeOut('slow');
+}, 3000);
+
 });

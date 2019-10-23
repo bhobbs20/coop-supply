@@ -5,10 +5,10 @@
           <div class="row align-items-center">
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" class="site-block-top-search" action="{% url 'searchstore:searchResult' %}" method="get">
-               {% csrf_token %}
-                <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
+              <form class="form-inline my-2 my-lg-0" action="{% url 'searchstore:searchResult' %}" method="get">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                
               </form>
             </div>
 
@@ -27,7 +27,7 @@
                         <span class="icon icon-person"></span>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">History</a>
+                        <a class="dropdown-item" href="{% url 'order:order_history' %}">History</a>
                         <a href="javascript:{document.getElementById('logout').submit()}" class="dropdown-item">
                         <i class="fas fa-sign-out-alt"></i> Logout
                         </a>
@@ -74,7 +74,7 @@
             <li class="active">
               <a href="{% url 'index' %}">Home</a>
             </li>
-           <li><a href="{% url 'store:allProdCat' %}">Shop</a></li>
+           <li class="{% if 'store' in request.path %}active{% endif %}"><a href="{% url 'store:allProdCat' %}">Shop</a></li>
 
               {% for cat in links %}
              <li><a href="{{cat.get_url}}">{{cat.name}}</a></li>
